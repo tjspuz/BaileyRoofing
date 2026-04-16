@@ -1274,6 +1274,7 @@ a.button:visited,
 
   .site-header--condensed .brand__logo {
     width: 176px;
+    opacity: 0.58;
   }
 
   .site-header--condensed .header-actions {
