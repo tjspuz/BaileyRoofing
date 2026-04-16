@@ -1326,3 +1326,22 @@ a.button:visited,
   }
 }
 
+/* Project gallery layout refinements */
+.page-hero__layout--single {
+  grid-template-columns: 1fr;
+}
+
+.page-hero--full-copy .page-hero__layout > div:first-child {
+  max-width: none;
+}
+
+.gallery-card img {
+  height: 286px;
+}
+
+@media (max-width: 720px) {
+  .gallery-card img {
+    height: 260px;
+  }
+}
+
