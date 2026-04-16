@@ -78,7 +78,7 @@ function renderHeader() {
   const page = document.body.dataset.page;
   const navItems = [
     ["home", "Home", "index.html"],
-    ["services", "Commercial", "services.html"],
+    ["services", "Commercial & Industrial", "services.html"],
     ["projects", "Project Gallery", "projects.html"],
     ["awards", "Awards", "awards.html"],
     ["about", "About Us", "about.html"],
@@ -105,15 +105,22 @@ function renderHeader() {
               alt="Bailey Roofing Contractors Inc"
             >
           </a>
-          <div class="header-contact">
-            <strong>515-253-0191</strong>
-            <span>Serving the Central Iowa Area</span>
+          <div class="header-actions">
+            <div class="header-contact">
+              <strong>515-253-0191</strong>
+              <span>Serving the Central Iowa Area</span>
+            </div>
+            <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Toggle navigation">
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
           </div>
         </div>
       </div>
       <div class="site-header__nav">
         <div class="shell">
-          <nav class="nav" aria-label="Primary">${nav}</nav>
+          <nav class="nav" id="primary-nav" aria-label="Primary">${nav}</nav>
         </div>
       </div>
     </header>
@@ -264,6 +271,32 @@ function mountCollection(selector, items, renderer, limit) {
   });
 }
 
+function wireHeaderMenu() {
+  const header = document.querySelector(".site-header");
+  const toggle = document.querySelector(".menu-toggle");
+  const navLinks = document.querySelectorAll(".nav a");
+
+  if (!header || !toggle) return;
+
+  function closeMenu() {
+    header.classList.remove("site-header--menu-open");
+    toggle.setAttribute("aria-expanded", "false");
+  }
+
+  toggle.addEventListener("click", () => {
+    const isOpen = header.classList.toggle("site-header--menu-open");
+    toggle.setAttribute("aria-expanded", String(isOpen));
+  });
+
+  navLinks.forEach((link) => {
+    link.addEventListener("click", closeMenu);
+  });
+
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 720) closeMenu();
+  });
+}
+
 function wireForms() {
   document.querySelectorAll(".estimate-form").forEach((form) => {
     const status = form.querySelector(".form-status") || form.querySelector("#form-status");
@@ -363,13 +396,13 @@ async function wireMap() {
     await loadScriptOnce("leaflet-script", "https://unpkg.com/leaflet@1.9.4/dist/leaflet.js");
   } catch (error) {
     canvas.classList.add("map-canvas--fallback");
-    canvas.innerHTML = '<p class="map-fallback">The interactive map could not load right now. Use the Google Maps link below.</p>';
+    canvas.innerHTML = '<p class="map-fallback">The interactive map could not load right now.</p>';
     return;
   }
 
   if (!window.L) {
     canvas.classList.add("map-canvas--fallback");
-    canvas.innerHTML = '<p class="map-fallback">The interactive map could not load right now. Use the Google Maps link below.</p>';
+    canvas.innerHTML = '<p class="map-fallback">The interactive map could not load right now.</p>';
     return;
   }
 
@@ -415,6 +448,7 @@ async function wireMap() {
 
 renderHeader();
 renderFooter();
+wireHeaderMenu();
 mountCollection('[data-home-panels="true"]', siteData.homePanels, createCard);
 mountCollection('[data-reviews-grid="featured"]', siteData.reviews, createReviewCard, 3);
 mountCollection('[data-reviews-grid="full"]', siteData.reviews, createReviewCard);
