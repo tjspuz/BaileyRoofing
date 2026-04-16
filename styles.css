@@ -1293,3 +1293,35 @@ a.button:visited,
   }
 }
 
+/* Visible mobile transparency */
+@media (max-width: 720px) {
+  .site-header__main,
+  .site-header__nav {
+    background: transparent;
+    transition: background-color 220ms ease, border-color 220ms ease;
+  }
+
+  .site-header--condensed {
+    background: rgba(255, 255, 255, 0.58);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.1);
+  }
+
+  .site-header--condensed .site-header__main,
+  .site-header--condensed .site-header__nav {
+    background: transparent;
+  }
+
+  .site-header--condensed .menu-toggle {
+    background: rgba(3, 45, 123, 0.92);
+    border-color: rgba(2, 31, 86, 0.92);
+  }
+
+  .site-header.site-header--menu-open {
+    background: rgba(255, 255, 255, 0.96);
+  }
+
+  .site-header.site-header--menu-open .site-header__nav {
+    background: rgba(255, 255, 255, 0.94);
+  }
+}
+
