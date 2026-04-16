@@ -78,7 +78,7 @@ function renderHeader() {
   const page = document.body.dataset.page;
   const navItems = [
     ["home", "Home", "index.html"],
-    ["services", "Commercial & Industrial", "services.html"],
+    ["services", "Commercial", "services.html"],
     ["projects", "Project Gallery", "projects.html"],
     ["awards", "Awards", "awards.html"],
     ["about", "About Us", "about.html"],
@@ -127,10 +127,30 @@ function renderFooter() {
   root.innerHTML = `
     <section class="footer-contact-section">
       <div class="shell footer-contact-grid">
+        <article class="footer-panel footer-panel--info">
+          <p class="eyebrow">Call Us Today</p>
+          <h2>Contact Us</h2>
+          <div class="footer-contact-card">
+            <div>
+              <p class="subheader subheader--compact">Bailey Roofing Contractors Inc</p>
+              <p>10110 Dennis Dr<br>Urbandale, Iowa 50322</p>
+            </div>
+            <div>
+              <p class="subheader subheader--compact">Phone and Email</p>
+              <p>Tel: <a href="tel:15152530191">515-253-0191</a><br>Fax: 515-253-0206</p>
+              <p><a href="mailto:baileyroofing@baileyroofing.com">baileyroofing@baileyroofing.com</a></p>
+            </div>
+            <div class="office-hours">
+              <p class="subheader subheader--compact">Office Hours</p>
+              <p>Mon - Fri: 8:00 am - 4:30 pm</p>
+              <p>Sat - Sun: Closed</p>
+              <p>24/7 emergency services are available.</p>
+            </div>
+          </div>
+        </article>
         <article class="footer-panel footer-panel--form">
           <p class="eyebrow">515-253-0191</p>
           <h2>Leave Us a Message</h2>
-          <p class="footer-panel__subhead">Contact Us</p>
           <form class="estimate-form estimate-form--compact">
             <div class="form-grid form-grid--compact">
               <label>
@@ -168,22 +188,6 @@ function renderFooter() {
               <p class="form-status" aria-live="polite"></p>
             </div>
           </form>
-        </article>
-        <article class="footer-panel footer-panel--info">
-          <p class="eyebrow">Call Us Today</p>
-          <h2>Contact Us</h2>
-          <div class="footer-contact-card">
-            <p class="subheader subheader--compact">Bailey Roofing Contractors Inc</p>
-            <p>10110 Dennis Dr<br>Urbandale, Iowa 50322</p>
-            <p>Tel: <a href="tel:15152530191">515-253-0191</a><br>Fax: 515-253-0206</p>
-            <p><a href="mailto:baileyroofing@baileyroofing.com">baileyroofing@baileyroofing.com</a></p>
-            <div class="office-hours">
-              <p class="subheader subheader--compact">Office Hours</p>
-              <p>Mon - Fri: 8:00 am - 4:30 pm</p>
-              <p>Sat - Sun: Closed</p>
-              <p>24/7 emergency services are available.</p>
-            </div>
-          </div>
         </article>
       </div>
     </section>
